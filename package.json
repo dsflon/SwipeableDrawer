@@ -1,0 +1,17 @@
+{
+  "name": "half-modal",
+  "version": "1.0.0",
+  "description": "My stunning Nuxt.js project",
+  "author": "Daiki Saito",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {}
+}
