@@ -90,7 +90,7 @@ export default {
     touchEnd() {
       this.endY = this.moveY;
 
-      if (this.moveY > 100) {
+      if (this.moveY > 50) {
         this.closeModal();
       } else {
         this.openModal();
