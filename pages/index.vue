@@ -8,7 +8,13 @@
       開く
     </button>
     <HalfModal :opened="opened" @close="toggleModal">
-      asdfasdfs
+      aasdfasd aasdsd aasdsd aasdsd aasdsd aasdsd aasdfasdfa aasdfasdfa
+      aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa
+      aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa
+      aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+      a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+      a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+      a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
     </HalfModal>
   </div>
 </template>
