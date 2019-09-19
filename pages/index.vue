@@ -1,72 +1,45 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        half-modal
-      </h1>
-      <h2 class="subtitle">
-        My stunning Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div :class="$style.container">
+    <button @click="toggleModal">
+      開く
+    </button>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <button @click="toggleModal">
+      開く
+    </button>
+    <HalfModal :opened="opened" @close="toggleModal">
+      asdfasdfs
+    </HalfModal>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import HalfModal from '~/components/HalfModal.vue';
 
 export default {
   components: {
-    Logo
-  }
-}
+    HalfModal,
+  },
+  data() {
+    return {
+      opened: false,
+    };
+  },
+  methods: {
+    toggleModal() {
+      this.opened = !this.opened;
+    },
+  },
+};
 </script>
 
-<style>
+<style module>
 .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  height: 1000px;
+  background: linear-gradient(
+    to bottom,
+    rgba(33, 28, 14, 0) 0%,
+    rgba(33, 28, 14, 0.7) 100%
+  );
 }
 </style>
