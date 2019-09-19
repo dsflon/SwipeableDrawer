@@ -1,17 +1,24 @@
 <template>
   <div :class="$style.container">
     <template v-for="n in 10">
-      <button :key="n" :class="$style.button" @click="toggleModal" />
+      <button
+        :key="n"
+        :class="[$style.button, $style.card]"
+        @click="toggleModal"
+      />
     </template>
 
     <HalfModal :opened="opened" @close="toggleModal">
-      aasdfasd aasdsd aasdsd aasdsd aasdsd aasdsd aasdfasdfa aasdfasdfa
-      aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa
-      aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa
-      aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
-      a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
-      a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
-      a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+      <div :class="$style.card" />
+      <div :style="{ padding: '10px' }">
+        aasdfasd aasdsd aasdsd aasdsd aasdsd aasdsd aasdfasdfa aasdfasdfa
+        aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa
+        aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa
+        aasdfasdfa aasdfasdfa aasdfasdfa aasdfasdfa a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+        a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+        a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+        a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />a<br />
+      </div>
     </HalfModal>
   </div>
 </template>
@@ -48,27 +55,31 @@ export default {
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
   border: none;
   margin-bottom: 10px;
+}
+
+.card {
   width: 100%;
-  height: calc(20vmin + 20px);
   padding: 10px;
   box-sizing: border-box;
   display: flex;
   justify-content: space-between;
 }
 
-.button:before {
+.card:before {
   content: '';
   display: block;
-  width: 20vmin;
+  width: 25%;
   height: 0;
-  padding-bottom: 20vmin;
+  padding-bottom: 25%;
   background: #ddd;
 }
 
-.button:after {
+.card:after {
   content: 'テキストが入ります。テキストが入ります。テキストが入ります。';
   display: block;
   text-align: left;
-  width: 66vmin;
+  width: 75%;
+  box-sizing: border-box;
+  padding-left: 10px;
 }
 </style>

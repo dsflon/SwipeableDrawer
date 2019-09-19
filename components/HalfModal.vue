@@ -20,7 +20,7 @@
 
 <script>
 import { createScrollLock } from '~/assets/js/scrollLock';
-import { EasingScroll } from '~/assets/js/easingScroll';
+import Easing from '~/assets/js/easing';
 
 export default {
   props: {
@@ -53,8 +53,8 @@ export default {
 
   mounted() {
     this.scrollLock = createScrollLock(window.document);
-    this.easingScroll = new EasingScroll('easeOutCubic', 300);
-    // this.addTouchEvent();
+    this.easing = new Easing('easeOutCubic', 400);
+    // this.addTouchEvent();{
 
     this.windowHeght = window.outerHeight;
   },
@@ -82,7 +82,7 @@ export default {
 
     touchMove(e) {
       const y = this.endY + e.changedTouches[0].clientY - this.startY;
-      if (this.$refs.halfModalInner.scrollTop === 0) {
+      if (this.$refs.halfModalInner.scrollTop <= 0) {
         this.moveY = y > 0 ? y : 0;
       }
     },
@@ -98,8 +98,12 @@ export default {
     },
 
     openModal() {
-      this.easingScroll.animate(this.moveY, 0, value => {
-        this.moveY = value;
+      this.easing.animate({
+        startValue: this.moveY,
+        endValue: 0,
+        progress: value => {
+          this.moveY = value;
+        },
       });
     },
 
@@ -107,16 +111,16 @@ export default {
       this.scrollLock.unlock();
       this.removeTouchEvent();
 
-      this.easingScroll.animate(
-        this.moveY,
-        this.windowHeght,
-        value => {
+      this.easing.animate({
+        startValue: this.moveY,
+        endValue: this.windowHeght,
+        progress: value => {
           this.moveY = value;
         },
-        () => {
+        complete: () => {
           this.$emit('close');
-        }
-      );
+        },
+      });
     },
   },
 };

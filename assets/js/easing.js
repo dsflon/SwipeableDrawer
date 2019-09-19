@@ -1,4 +1,14 @@
-export const Easing = {
+/**
+ *
+ * Easing
+ *
+ * t : 時間(進行度)
+ * b : 開始の値(開始時の座標やスケールなど)
+ * c : 開始と終了の値の差分
+ * d : Tween(トゥイーン)の合計時間
+ *
+ **/
+const easingFunctions = {
   linear: (t, b, c, d) => {
     t /= d;
     return c * t + b;
@@ -64,3 +74,43 @@ export const Easing = {
     }
   },
 };
+
+export default class Easing {
+  constructor(easingName = 'linear', speed = 800) {
+    this.easingName = easingName;
+    this.speed = speed;
+  }
+
+  /**
+   * Easingを開始する
+   * @param {number} startValue 開始時の座標やスケールなど
+   * @param {number} endValue 終了時の座標やスケールなど
+   * @param {function} progress 実行中に実行される
+   * @param {function} complete 実行終了時に実行される
+   **/
+  animate({ startValue, endValue, progress, complete }) {
+    const startTime = new Date().getTime(); //経過時刻
+
+    const animation = () => {
+      const currentTime = new Date().getTime() - startTime;
+
+      this.render = window.requestAnimationFrame(animation);
+
+      const value = easingFunctions[this.easingName](
+        currentTime,
+        startValue,
+        endValue - startValue,
+        this.speed
+      );
+
+      if (progress) progress(value);
+
+      if (currentTime >= this.speed) {
+        if (complete) complete();
+        cancelAnimationFrame(this.render);
+      }
+    };
+
+    animation();
+  }
+}
