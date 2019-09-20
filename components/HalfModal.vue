@@ -36,17 +36,14 @@ export default {
       moveY: 0,
       endY: 0,
       windowHeght: 0,
+      touchStartTime: null,
     };
   },
 
   watch: {
     opened(opened) {
       if (opened) {
-        this.moveY = this.windowHeght;
-
-        this.scrollLock.lock();
-        this.addTouchEvent();
-        this.openModal();
+        this.initialSetUp();
       }
     },
   },
@@ -54,12 +51,21 @@ export default {
   mounted() {
     this.scrollLock = createScrollLock(window.document);
     this.easing = new Easing('easeOutCubic', 400);
-    // this.addTouchEvent();{
 
-    this.windowHeght = window.outerHeight;
+    if (this.opened) {
+      this.initialSetUp();
+    }
   },
 
   methods: {
+    initialSetUp() {
+      this.windowHeght = window.outerHeight;
+      this.moveY = this.windowHeght;
+
+      this.scrollLock.lock();
+      this.addTouchEvent();
+      this.openModal();
+    },
     addTouchEvent() {
       this.$nextTick(() => {
         document.addEventListener('touchstart', this.touchStart);
@@ -78,6 +84,8 @@ export default {
       this.startY = e.touches[0].clientY;
       this.moveY = 0;
       this.endY = 0;
+
+      this.touchStartTime = new Date().getTime();
     },
 
     touchMove(e) {
@@ -90,10 +98,18 @@ export default {
     touchEnd() {
       this.endY = this.moveY;
 
-      if (this.moveY > 50) {
+      // 100px 下にスライドしたら閉じる
+      if (this.moveY > 100) {
         this.closeModal();
       } else {
-        this.openModal();
+        // 150ms 以内に 30px 下にスワイプしたら閉じる
+        const touchingTime = new Date().getTime() - this.touchStartTime;
+        if (touchingTime < 150 && this.moveY > 30) {
+          this.closeModal();
+        } else {
+          // それ以外は上に戻る
+          this.openModal();
+        }
       }
     },
 
@@ -115,6 +131,7 @@ export default {
         startValue: this.moveY,
         endValue: this.windowHeght,
         progress: value => {
+          console.log(value);
           this.moveY = value;
         },
         complete: () => {
