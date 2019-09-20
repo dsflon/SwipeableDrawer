@@ -1,9 +1,22 @@
+/* nuxt.config.js */
+// `DEPLOY_ENV` が `GH_PAGES` の場合のみ `router.base = '/<repository-name>/'` を追加する
+const routerBase =
+  process.env.DEPLOY_ENV === 'GH_PAGES'
+    ? {
+        router: {
+          base: '/half-modal/',
+        },
+      }
+    : {};
+
 export default {
   mode: 'universal',
 
   server: {
     host: '0.0.0.0', // デフォルト: localhost
   },
+
+  ...routerBase,
 
   /*
    ** Headers of the page
