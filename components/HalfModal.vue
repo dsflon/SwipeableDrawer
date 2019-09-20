@@ -131,7 +131,6 @@ export default {
         startValue: this.moveY,
         endValue: this.windowHeght,
         progress: value => {
-          console.log(value);
           this.moveY = value;
         },
         complete: () => {
