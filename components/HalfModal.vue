@@ -98,8 +98,8 @@ export default {
     touchEnd() {
       this.endY = this.moveY;
 
-      // 100px 下にスライドしたら閉じる
-      if (this.moveY > 100) {
+      // 下にスライドしたら閉じる
+      if (this.moveY > this.windowHeght / 2) {
         this.closeModal();
       } else {
         // 150ms 以内に 30px 下にスワイプしたら閉じる
