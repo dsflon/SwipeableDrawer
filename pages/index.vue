@@ -51,7 +51,7 @@ export default {
 
 .button {
   background: #fff;
-  border-radius: 2px;
+  border-radius: 3px;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.1);
   border: none;
   margin-bottom: 10px;

@@ -99,12 +99,12 @@ export default {
       this.endY = this.moveY;
 
       // 下にスライドしたら閉じる
-      if (this.moveY > this.windowHeght / 2) {
+      if (this.moveY > this.windowHeght / 4) {
         this.closeModal();
       } else {
-        // 150ms 以内に 30px 下にスワイプしたら閉じる
+        // 200ms 以内に 30px 下にスワイプしたら閉じる
         const touchingTime = new Date().getTime() - this.touchStartTime;
-        if (touchingTime < 150 && this.moveY > 30) {
+        if (touchingTime < 200 && this.moveY > 30) {
           this.closeModal();
         } else {
           // それ以外は上に戻る
@@ -155,6 +155,7 @@ export default {
   box-shadow: 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
   z-index: 3;
   padding: 20px 0 0;
+  border-radius: 3px 3px 0 0;
 
   transform: translateY(var(--moveY));
 }
