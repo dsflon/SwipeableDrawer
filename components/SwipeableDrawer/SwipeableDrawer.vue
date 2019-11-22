@@ -38,7 +38,7 @@ import {
   Watch,
 } from 'vue-property-decorator';
 
-import { Easing, EasingType } from '~/assets/js/Easing';
+import { Easing, EasingType } from './Easing';
 
 @Component
 export default class SwipeableDrawer extends Vue {

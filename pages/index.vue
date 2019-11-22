@@ -42,7 +42,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import SwipeableDrawer from '~/components/SwipeableDrawer.vue';
+import { SwipeableDrawer } from '~/components/SwipeableDrawer';
 
 @Component({
   components: {
