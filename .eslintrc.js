@@ -5,17 +5,18 @@ module.exports = {
     node: true
   },
   parserOptions: {
-    parser: "babel-eslint"
+    parser: "@typescript-eslint/parser"
   },
   extends: [
-    "eslint:recommended",
-    // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // より厳しいルールにするには`plugin:vue/strongly-recommended` もしくは `plugin:vue/recommended` に切り替えることを検討してください。
-    "plugin:vue/recommended",
-    "plugin:prettier/recommended"
+    // "eslint:recommended",
+    // // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
+    // // より厳しいルールにするには`plugin:vue/strongly-recommended` もしくは `plugin:vue/recommended` に切り替えることを検討してください。
+    // "plugin:vue/recommended",
+    // "plugin:prettier/recommended"
+    '@nuxtjs'
   ],
   // *.vue ファイルを lint にかけるために必要
-  plugins: ["vue"],
+  plugins: ["@typescript-eslint"],
   // ここにカスタムルールを追加します。
   rules: {
     "no-console": "off",

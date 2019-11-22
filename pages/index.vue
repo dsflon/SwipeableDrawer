@@ -23,24 +23,23 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
 import HalfModal from '~/components/HalfModal.vue';
 
-export default {
+@Component({
   components: {
     HalfModal,
   },
-  data() {
-    return {
-      opened: false,
-    };
-  },
-  methods: {
-    toggleModal() {
-      this.opened = !this.opened;
-    },
-  },
-};
+})
+export default class Index extends Vue {
+  opened = false;
+
+  toggleModal() {
+    this.opened = !this.opened;
+  }
+}
 </script>
 
 <style module>

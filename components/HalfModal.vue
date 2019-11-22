@@ -19,10 +19,14 @@
 </template>
 
 <script>
+import Vue from 'vue';
+
 import { createScrollLock } from '~/assets/js/scrollLock';
 import Easing from '~/assets/js/easing';
 
-export default {
+export default Vue.extend({
+  name: 'HalfModal',
+
   props: {
     opened: {
       type: Boolean,
@@ -139,7 +143,7 @@ export default {
       });
     },
   },
-};
+});
 </script>
 
 <style module>
