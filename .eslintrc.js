@@ -8,41 +8,31 @@ module.exports = {
     parser: "@typescript-eslint/parser"
   },
   extends: [
-    // "eslint:recommended",
-    // // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-    // // より厳しいルールにするには`plugin:vue/strongly-recommended` もしくは `plugin:vue/recommended` に切り替えることを検討してください。
-    // "plugin:vue/recommended",
-    // "plugin:prettier/recommended"
-    '@nuxtjs'
+    'plugin:@typescript-eslint/recommended',
+    '@nuxtjs/eslint-config-typescript',
+    'airbnb-base',
   ],
   // *.vue ファイルを lint にかけるために必要
-  plugins: ["@typescript-eslint"],
+  plugins: [
+    '@typescript-eslint',
+    'import',
+    'vue',
+  ],
   // ここにカスタムルールを追加します。
   rules: {
-    "no-console": "off",
-    "vue/max-attributes-per-line": "off",
-    "vue/html-self-closing": ["error", {
-      "html": {
-        "void": "always",
-      }
-    }],
-    "prettier/prettier": [
-        "error",
-        {
-          semi: true,
-          singleQuote: true,
-          trailingComma: 'es5',
-        }
-    ],
+    // 最大字数は警告に留める
+    'max-len': 'off',
+    // strict モードは警告に留める
+    strict: ['warn', 'safe'],
 
-    // const or let を強制
-    "no-var": "error",
-    // 再代入がない限り const を強制
-    "prefer-const": "error",
+    "@typescript-eslint/no-non-null-assertion": ["off"],
 
-    "no-irregular-whitespace": 0,
+    'import/no-unresolved': 'off',
 
-    "no-control-regex": 0,
-    "no-useless-escape": 0
-  }
+    // default export を強制すると複数 export するインターフェース変更時に修正箇所が増えるので無効化
+    'import/prefer-default-export': 'off',
+  },
+  settings: {
+    'import/resolver': 'webpack'
+  },
 };
