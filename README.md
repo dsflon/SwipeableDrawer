@@ -1,7 +1,7 @@
 # Page
-https://dsflon.github.io/half-modal/
+https://dsflon.github.io/SwipeableDrawer/
 
-# half-modal
+# SwipeableDrawer
 
 > My stunning Nuxt.js project
 
